@@ -1,7 +1,7 @@
 # pgoperator
 
 A Toy Kubernetes operator for managing PostgreSQL database instances, built from scratch using raw `client-go` (no Kubebuilder/Operator SDK).
-> :warn: this is strictly for learning purpose, don't take it seriously, WIP
+> ⚠️ this is strictly for learning purpose, don't take it seriously, WIP
 
 ## Overview
 
