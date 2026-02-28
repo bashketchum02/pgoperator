@@ -1,0 +1,24 @@
+# kind cluster configuration for ServeOperator development
+# This creates a single control-plane + single worker node cluster
+# with local storage provisioning for PVCs.
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: pgoperator-dev
+nodes:
+  - role: control-plane
+    kubeadmConfigPatches:
+      - |
+        kind: InitConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "ingress-ready=true"
+    extraPortMappings:
+      # Expose NodePort range for testing database connections
+      - containerPort: 30000
+        hostPort: 30000
+        protocol: TCP
+      - containerPort: 30001
+        hostPort: 30001
+        protocol: TCP
+  - role: worker
+  - role: worker
